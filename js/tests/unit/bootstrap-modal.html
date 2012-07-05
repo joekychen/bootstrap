@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html><head><title>joekychen/bootstrap » js › tests › unit › bootstrap-modal.js
+
+</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Docco">
+<link rel="stylesheet" media="all" href="../../../stylesheets/docco.min.css" />
+
+
+</head>
+<body>
+<div id="container">
+<div id="background"></div>
+<table cellpadding="0" cellspacing="0">
+<thead><tr><th class="docs"><a id="home" href="../../../index.html"></a><h1>bootstrap-modal.js</h1></th><th class="code"></th></tr></thead>
+<tbody>
+
+
+<tr id="section-1"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-1">&#182;</a></div></td><td class="code"><div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="nx">module</span><span class="p">(</span><span class="s2">&quot;bootstrap-modal&quot;</span><span class="p">)</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should be defined on jquery object&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;&lt;div id=&#39;modal-test&#39;&gt;&lt;/div&gt;&quot;</span><span class="p">)</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">div</span><span class="p">.</span><span class="nx">modal</span><span class="p">,</span> <span class="s1">&#39;modal method is defined&#39;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should return element&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;&lt;div id=&#39;modal-test&#39;&gt;&lt;/div&gt;&quot;</span><span class="p">)</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">div</span><span class="p">.</span><span class="nx">modal</span><span class="p">()</span> <span class="o">==</span> <span class="nx">div</span><span class="p">,</span> <span class="s1">&#39;document.body returned&#39;</span><span class="p">)</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#modal-test&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should expose defaults var for settings&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">defaults</span><span class="p">,</span> <span class="s1">&#39;default object exposed&#39;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should insert into dom when show method is called&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">stop</span><span class="p">()</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">transition</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;&lt;div id=&#39;modal-test&#39;&gt;&lt;/div&gt;&quot;</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;shown&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#modal-test&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span> <span class="s1">&#39;modal insterted into dom&#39;</span><span class="p">)</span>
+            <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="nx">start</span><span class="p">()</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="nx">modal</span><span class="p">(</span><span class="s2">&quot;show&quot;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should fire show event&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">stop</span><span class="p">()</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">transition</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;&lt;div id=&#39;modal-test&#39;&gt;&lt;/div&gt;&quot;</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;show&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="s2">&quot;show was called&quot;</span><span class="p">)</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;shown&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="nx">start</span><span class="p">()</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="nx">modal</span><span class="p">(</span><span class="s2">&quot;show&quot;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should not fire shown when default prevented&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">stop</span><span class="p">()</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">transition</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;&lt;div id=&#39;modal-test&#39;&gt;&lt;/div&gt;&quot;</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;show&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="s2">&quot;show was called&quot;</span><span class="p">)</span>
+            <span class="nx">start</span><span class="p">()</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;shown&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span> <span class="s2">&quot;shown was called&quot;</span><span class="p">)</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="nx">modal</span><span class="p">(</span><span class="s2">&quot;show&quot;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should hide modal when hide is called&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">stop</span><span class="p">()</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">transition</span> <span class="o">=</span> <span class="kc">false</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;&lt;div id=&#39;modal-test&#39;&gt;&lt;/div&gt;&quot;</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;shown&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#modal-test&#39;</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s2">&quot;:visible&quot;</span><span class="p">),</span> <span class="s1">&#39;modal visible&#39;</span><span class="p">)</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#modal-test&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span> <span class="s1">&#39;modal insterted into dom&#39;</span><span class="p">)</span>
+            <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s2">&quot;hide&quot;</span><span class="p">)</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;hidden&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="o">!</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#modal-test&#39;</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s2">&quot;:visible&quot;</span><span class="p">),</span> <span class="s1">&#39;modal hidden&#39;</span><span class="p">)</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#modal-test&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="nx">start</span><span class="p">()</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="nx">modal</span><span class="p">(</span><span class="s2">&quot;show&quot;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should toggle when toggle is called&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">stop</span><span class="p">()</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">transition</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;&lt;div id=&#39;modal-test&#39;&gt;&lt;/div&gt;&quot;</span><span class="p">)</span>
+        <span class="nx">div</span>
+          <span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;shown&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#modal-test&#39;</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s2">&quot;:visible&quot;</span><span class="p">),</span> <span class="s1">&#39;modal visible&#39;</span><span class="p">)</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#modal-test&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span> <span class="s1">&#39;modal insterted into dom&#39;</span><span class="p">)</span>
+            <span class="nx">div</span><span class="p">.</span><span class="nx">modal</span><span class="p">(</span><span class="s2">&quot;toggle&quot;</span><span class="p">)</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;hidden&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="o">!</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#modal-test&#39;</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s2">&quot;:visible&quot;</span><span class="p">),</span> <span class="s1">&#39;modal hidden&#39;</span><span class="p">)</span>
+            <span class="nx">div</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="nx">start</span><span class="p">()</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="nx">modal</span><span class="p">(</span><span class="s2">&quot;toggle&quot;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should remove from dom when click [data-dismiss=modal]&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">stop</span><span class="p">()</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">transition</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;&lt;div id=&#39;modal-test&#39;&gt;&lt;span class=&#39;close&#39; data-dismiss=&#39;modal&#39;&gt;&lt;/span&gt;&lt;/div&gt;&quot;</span><span class="p">)</span>
+        <span class="nx">div</span>
+          <span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;shown&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#modal-test&#39;</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s2">&quot;:visible&quot;</span><span class="p">),</span> <span class="s1">&#39;modal visible&#39;</span><span class="p">)</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#modal-test&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span> <span class="s1">&#39;modal insterted into dom&#39;</span><span class="p">)</span>
+            <span class="nx">div</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.close&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">()</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;hidden&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">ok</span><span class="p">(</span><span class="o">!</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#modal-test&#39;</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s2">&quot;:visible&quot;</span><span class="p">),</span> <span class="s1">&#39;modal hidden&#39;</span><span class="p">)</span>
+            <span class="nx">div</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="nx">start</span><span class="p">()</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="nx">modal</span><span class="p">(</span><span class="s2">&quot;toggle&quot;</span><span class="p">)</span>
+      <span class="p">})</span>
+<span class="p">})</span>
+
+</pre></div></td></tr>
+
+</tbody>
+</table>
+</div>
+
+</body>
+<script>docas={repo:"joekychen/bootstrap",depth:3}</script>
+<script>document.write('<script src=' + ('__proto__' in {} ? 'http://cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js' : 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')+'><\\/script>')</script>
+<script src="http://baoshan.github.com/moment/min/moment.min.js"></script>
+<script src="../../../javascript/docco.min.js"></script>
+</html>

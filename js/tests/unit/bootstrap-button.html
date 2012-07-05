@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html><head><title>joekychen/bootstrap » js › tests › unit › bootstrap-button.js
+
+</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Docco">
+<link rel="stylesheet" media="all" href="../../../stylesheets/docco.min.css" />
+
+
+</head>
+<body>
+<div id="container">
+<div id="background"></div>
+<table cellpadding="0" cellspacing="0">
+<thead><tr><th class="docs"><a id="home" href="../../../index.html"></a><h1>bootstrap-button.js</h1></th><th class="code"></th></tr></thead>
+<tbody>
+
+
+<tr id="section-1"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-1">&#182;</a></div></td><td class="code"><div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="nx">module</span><span class="p">(</span><span class="s2">&quot;bootstrap-buttons&quot;</span><span class="p">)</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should be defined on jquery object&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">button</span><span class="p">,</span> <span class="s1">&#39;button method is defined&#39;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should return element&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">button</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="s1">&#39;document.body returned&#39;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should return set state to loading&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;button class=&quot;btn&quot; data-loading-text=&quot;fat&quot;&gt;mdo&lt;/button&gt;&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">html</span><span class="p">(),</span> <span class="s1">&#39;mdo&#39;</span><span class="p">,</span> <span class="s1">&#39;btn text equals mdo&#39;</span><span class="p">)</span>
+        <span class="nx">btn</span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s1">&#39;loading&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">html</span><span class="p">(),</span> <span class="s1">&#39;fat&#39;</span><span class="p">,</span> <span class="s1">&#39;btn text equals fat&#39;</span><span class="p">)</span>
+        <span class="nx">stop</span><span class="p">()</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">ok</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">),</span> <span class="s1">&#39;btn is disabled&#39;</span><span class="p">)</span>
+          <span class="nx">ok</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">),</span> <span class="s1">&#39;btn has disabled class&#39;</span><span class="p">)</span>
+          <span class="nx">start</span><span class="p">()</span>
+        <span class="p">},</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should return reset state&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;button class=&quot;btn&quot; data-loading-text=&quot;fat&quot;&gt;mdo&lt;/button&gt;&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">html</span><span class="p">(),</span> <span class="s1">&#39;mdo&#39;</span><span class="p">,</span> <span class="s1">&#39;btn text equals mdo&#39;</span><span class="p">)</span>
+        <span class="nx">btn</span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s1">&#39;loading&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">html</span><span class="p">(),</span> <span class="s1">&#39;fat&#39;</span><span class="p">,</span> <span class="s1">&#39;btn text equals fat&#39;</span><span class="p">)</span>
+        <span class="nx">stop</span><span class="p">()</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">ok</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">),</span> <span class="s1">&#39;btn is disabled&#39;</span><span class="p">)</span>
+          <span class="nx">ok</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">),</span> <span class="s1">&#39;btn has disabled class&#39;</span><span class="p">)</span>
+          <span class="nx">start</span><span class="p">()</span>
+          <span class="nx">stop</span><span class="p">()</span>
+        <span class="p">},</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="nx">btn</span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s1">&#39;reset&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">html</span><span class="p">(),</span> <span class="s1">&#39;mdo&#39;</span><span class="p">,</span> <span class="s1">&#39;btn text equals mdo&#39;</span><span class="p">)</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">ok</span><span class="p">(</span><span class="o">!</span><span class="nx">btn</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">),</span> <span class="s1">&#39;btn is not disabled&#39;</span><span class="p">)</span>
+          <span class="nx">ok</span><span class="p">(</span><span class="o">!</span><span class="nx">btn</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">),</span> <span class="s1">&#39;btn does not have disabled class&#39;</span><span class="p">)</span>
+          <span class="nx">start</span><span class="p">()</span>
+        <span class="p">},</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should toggle active&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;button class=&quot;btn&quot;&gt;mdo&lt;/button&gt;&#39;</span><span class="p">)</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="o">!</span><span class="nx">btn</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">),</span> <span class="s1">&#39;btn does not have active class&#39;</span><span class="p">)</span>
+        <span class="nx">btn</span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s1">&#39;toggle&#39;</span><span class="p">)</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">),</span> <span class="s1">&#39;btn has class active&#39;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should toggle active when btn children are clicked&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;button class=&quot;btn&quot; data-toggle=&quot;button&quot;&gt;mdo&lt;/button&gt;&#39;</span><span class="p">)</span>
+          <span class="p">,</span> <span class="nx">inner</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;i&gt;&lt;/i&gt;&#39;</span><span class="p">)</span>
+        <span class="nx">btn</span>
+          <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">inner</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">appendTo</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#qunit-fixture&#39;</span><span class="p">))</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="o">!</span><span class="nx">btn</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">),</span> <span class="s1">&#39;btn does not have active class&#39;</span><span class="p">)</span>
+        <span class="nx">inner</span><span class="p">.</span><span class="nx">click</span><span class="p">()</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">),</span> <span class="s1">&#39;btn has class active&#39;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+     <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should toggle active when btn children are clicked within btn-group&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">btngroup</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;btn-group&quot; data-toggle=&quot;buttons-checkbox&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+          <span class="p">,</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;button class=&quot;btn&quot;&gt;fat&lt;/button&gt;&#39;</span><span class="p">)</span>
+          <span class="p">,</span> <span class="nx">inner</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;i&gt;&lt;/i&gt;&#39;</span><span class="p">)</span>
+        <span class="nx">btngroup</span>
+          <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">inner</span><span class="p">))</span>
+          <span class="p">.</span><span class="nx">appendTo</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#qunit-fixture&#39;</span><span class="p">))</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="o">!</span><span class="nx">btn</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">),</span> <span class="s1">&#39;btn does not have active class&#39;</span><span class="p">)</span>
+        <span class="nx">inner</span><span class="p">.</span><span class="nx">click</span><span class="p">()</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">btn</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">),</span> <span class="s1">&#39;btn has class active&#39;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+<span class="p">})</span>
+
+</pre></div></td></tr>
+
+</tbody>
+</table>
+</div>
+
+</body>
+<script>docas={repo:"joekychen/bootstrap",depth:3}</script>
+<script>document.write('<script src=' + ('__proto__' in {} ? 'http://cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js' : 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')+'><\\/script>')</script>
+<script src="http://baoshan.github.com/moment/min/moment.min.js"></script>
+<script src="../../../javascript/docco.min.js"></script>
+</html>

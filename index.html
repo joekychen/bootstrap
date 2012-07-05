@@ -1,284 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Twitter Bootstrap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<html><head>
+<title>joekychen/bootstrap - HTML, CSS, and JS toolkit from Twitter</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" media="all" href="stylesheets/index.min.css" />
+</head>
+<body>
+<div id="container">
+<div id="background"></div>
+<table cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td>
+<div style="position:absolute;top:0px;left:0px;width:525px">
+<a href="https://github.com/joekychen/bootstrap"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+</div>
+<h1>bootstrap</h1>
+<p>HTML, CSS, and JS toolkit from Twitter</p>
+<!--readme-->
+</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<div class="markdown_browser"><h1><a href="http://twitter.github.com/bootstrap">Twitter Bootstrap</a> <a href="http://travis-ci.org/twitter/bootstrap"><img src="https://secure.travis-ci.org/twitter/bootstrap.png" alt="Build Status" title="" /></a></h1>
 
-    <!-- Le styles -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="assets/css/docs.css" rel="stylesheet">
-    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+<p>Bootstrap provides simple and flexible HTML, CSS, and Javascript for popular user interface components and interactions. In other words, it's a front-end toolkit for faster, more beautiful web development. It's created and maintained by <a href="http://twitter.com/mdo">Mark Otto</a> and <a href="http://twitter.com/fat">Jacob Thornton</a> at Twitter.</p>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+<p>To get started, checkout http://twitter.github.com/bootstrap!</p>
 
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+<h2>Quick start</h2>
 
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-146052-10']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-  </head>
+<p>Clone the repo, <code>git clone git://github.com/twitter/bootstrap.git</code>, or <a href="https://github.com/twitter/bootstrap/zipball/master">download the latest release</a>.</p>
 
-  <body data-spy="scroll" data-target=".subnav" data-offset="50">
+<h2>Versioning</h2>
 
+<p>For transparency and insight into our release cycle, and for striving to maintain backward compatibility, Bootstrap will be maintained under the Semantic Versioning guidelines as much as possible.</p>
 
-  <!-- Navbar
-    ================================================== -->
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button"class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="./index.html">Bootstrap</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active">
-                <a href="./index.html">Overview</a>
-              </li>
-              <li class="">
-                <a href="./scaffolding.html">Scaffolding</a>
-              </li>
-              <li class="">
-                <a href="./base-css.html">Base CSS</a>
-              </li>
-              <li class="">
-                <a href="./components.html">Components</a>
-              </li>
-              <li class="">
-                <a href="./javascript.html">Javascript plugins</a>
-              </li>
-              <li class="">
-                <a href="./less.html">Using LESS</a>
-              </li>
-              <li class="divider-vertical"></li>
-              <li class="">
-                <a href="./download.html">Customize</a>
-              </li>
-              <li class="">
-                <a href="./examples.html">Examples</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+<p>Releases will be numbered with the follow format:</p>
 
-    <div class="container">
+<p><code>&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</code></p>
 
-<!-- Masthead
-================================================== -->
-<header class="jumbotron masthead">
-  <div class="inner">
-    <h1>Bootstrap, from Twitter</h1>
-    <p>Simple and flexible HTML, CSS, and Javascript for popular user interface components and interactions.</p>
-    <p class="download-info">
-      <a href="https://github.com/twitter/bootstrap/" class="btn btn-primary btn-large" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'GitHub Project', 'View project on GitHub']);">View project on GitHub</a>
-      <a href="assets/bootstrap.zip" class="btn btn-large" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download 2.0.4']);">Download Bootstrap <small>(v2.0.4)</small></a>
-    </p>
-  </div>
+<p>And constructed with the following guidelines:</p>
 
-  <div class="bs-links">
-    <ul class="quick-links">
-      <li><a href="./upgrading.html">Upgrading from 1.4</a></li>
-      <li><a href="https://github.com/twitter/bootstrap/zipball/master">Download with docs</a></li>
-      <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
-      <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
-      <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
-    </ul>
-    <ul class="quick-links">
-      <li>
-        <iframe class="github-btn" src="http://markdotto.github.com/github-buttons/github-btn.html?user=twitter&repo=bootstrap&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="112px" height="20px"></iframe>
-      </li>
-      <li>
-        <iframe class="github-btn" src="http://markdotto.github.com/github-buttons/github-btn.html?user=twitter&repo=bootstrap&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="98px" height="20px"></iframe>
-      </li>
-      <li class="follow-btn">
-        <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @twbootstrap</a>
-      </li>
-      <li class="tweet-btn">
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://twitter.github.com/bootstrap/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Twitter Bootstrap">Tweet</a>
-      </li>
-    </ul>
-  </div>
-</header>
+<ul>
+<li>Breaking backward compatibility bumps the major (and resets the minor and patch)</li>
+<li>New additions without breaking backward compatibility bumps the minor (and resets the patch)</li>
+<li>Bug fixes and misc changes bumps the patch</li>
+</ul>
 
-<hr class="soften">
+<p>For more information on SemVer, please visit http://semver.org/.</p>
 
-<div class="marketing">
-  <h1>Designed for everyone, everywhere.</h1>
-  <p class="marketing-byline">Need reasons to love Bootstrap? Look no further.</p>
-  <div class="row">
-    <div class="span4">
-      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_042_group.png">
-      <h2>Built for and by nerds</h2>
-      <p>Like you, we love building awesome products on the web. We love it so much, we decided to help people just like us do it easier, better, and faster. Bootstrap is built for you.</p>
-    </div>
-    <div class="span4">
-      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_079_podium.png">
-      <h2>For all skill levels</h2>
-      <p>Bootstrap is designed to help people of all skill levels&mdash;designer or developer, huge nerd or early beginner. Use it as a complete kit or use to start something more complex.</p>
-    </div>
-    <div class="span4">
-      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_163_iphone.png">
-      <h2>Cross-everything</h2>
-      <p>Originally built with only modern browsers in mind, Bootstrap has evolved to include support for all major browsers (even IE7!) and, with Bootstrap 2, tablets and smartphones, too.</p>
-    </div>
-  </div><!--/row-->
-  <div class="row">
-    <div class="span4">
-      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_155_show_thumbnails.png">
-      <h2>12-column grid</h2>
-      <p>Grid systems aren't everything, but having a durable and flexible one at the core of your work can make development much simpler. Use our built-in grid classes or roll your own.</p>
-    </div>
-    <div class="span4">
-      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_214_resize_small.png">
-      <h2>Responsive design</h2>
-      <p>With Bootstrap 2, we've gone fully responsive. Our components are scaled according to a range of resolutions and devices to provide a consistent experience, no matter what.</p>
-    </div>
-    <div class="span4">
-      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_266_book_open.png">
-      <h2>Styleguide docs</h2>
-      <p>Unlike other front-end toolkits, Bootstrap was designed first and foremost as a styleguide to document not only our features, but best practices and living, coded examples.</p>
-    </div>
-  </div><!--/row-->
-  <div class="row">
-    <div class="span4">
-      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_082_roundabout.png">
-      <h2>Growing library</h2>
-      <p>Despite being only 10kb (gzipped), Bootstrap is one of the most complete front-end toolkits out there with dozens of fully functional components ready to be put to use.</p>
-    </div>
-    <div class="span4">
-      <img class="bs-icon" src="assets/img/glyphicons/glyphicons_009_magic.png">
-      <h2>Custom jQuery plugins</h2>
-      <p>What good is an awesome design component without easy-to-use, proper, and extensible interactions? With Bootstrap, you get custom-built jQuery plugins to bring your projects to life.</p>
-    </div>
-    <div class="span4">
-      <img class="bs-icon" src="assets/img/less-small.png">
-      <h2>Built on LESS</h2>
-      <p>Where vanilla CSS falters, LESS excels. Variables, nesting, operations, and mixins in LESS makes coding CSS faster and more efficient with minimal overhead.</p>
-    </div>
-  </div><!--/row-->
-  <div class="row">
-    <div class="span3">
-      <img class="small-bs-icon" src="assets/img/icon-html5.png">
-      <h3>HTML5</h3>
-      <p>Built to support new HTML5 elements and syntax.</p>
-    </div>
-    <div class="span3">
-      <img class="small-bs-icon" src="assets/img/icon-css3.png">
-      <h3>CSS3</h3>
-      <p>Progressively enhanced components for ultimate style.</p>
-    </div>
-    <div class="span3">
-      <img class="small-bs-icon" src="assets/img/icon-github.png">
-      <h3>Open-source</h3>
-      <p>Built for and maintained by the community via <a href="https://github.com">GitHub</a>.</p>
-    </div>
-    <div class="span3">
-      <img class="small-bs-icon" src="assets/img/icon-twitter.png">
-      <h3>Made at Twitter</h3>
-      <p>Brought to you by an experienced <a href="http://twitter.com/fat">engineer</a> and <a href="http://twitter.com/mdo">designer</a>.</p>
-    </div>
-  </div><!--/row-->
+<h2>Bug tracker</h2>
 
-  <hr class="soften">
+<p>Have a bug? Please create an issue here on GitHub! Also, when filing please make sure you're familiar with <a href="https://github.com/necolas/issue-guidelines">necolas's guidelines</a>. thanks! &lt;3</p>
 
-  <h1>Built with Bootstrap.</h1>
-  <p class="marketing-byline">For even more sites built with Bootstrap, <a href="http://builtwithbootstrap.tumblr.com/" target="_blank">visit the unofficial Tumblr</a> or <a href="./examples.html">browse the examples</a>.</p>
-  <ul class="thumbnails example-sites">
-    <li class="span3">
-      <a class="thumbnail" href="http://soundready.fm/" target="_blank">
-        <img src="assets/img/example-sites/soundready.png" alt="SoundReady.fm">
-      </a>
-    </li>
-    <li class="span3">
-      <a class="thumbnail" href="http://kippt.com/" target="_blank">
-        <img src="assets/img/example-sites/kippt.png" alt="Kippt">
-      </a>
-    </li>
-    <li class="span3">
-      <a class="thumbnail" href="http://www.fleetio.com/" target="_blank">
-        <img src="assets/img/example-sites/fleetio.png" alt="Fleetio">
-      </a>
-    </li>
-    <li class="span3">
-      <a class="thumbnail" href="http://www.jshint.com/" target="_blank">
-        <img src="assets/img/example-sites/jshint.png" alt="JS Hint">
-      </a>
-    </li>
-  </ul>
+<p>https://github.com/twitter/bootstrap/issues</p>
 
-</div><!-- /.marketing -->
+<h2>Twitter account</h2>
 
-     <!-- Footer
-      ================================================== -->
-      <footer class="footer">
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-      </footer>
+<p>Keep up to date on announcements and more by following Bootstrap on Twitter, <a href="http://twitter.com/TwBootstrap">@TwBootstrap</a>.</p>
 
-    </div><!-- /container -->
+<h2>Blog</h2>
+
+<p>Read more detailed announcements, discussions, and more on <a href="http://blog.getbootstrap.com">The Official Twitter Bootstrap Blog</a>.</p>
+
+<h2>Mailing list</h2>
+
+<p>Have a question? Ask on our mailing list!</p>
+
+<p>twitter-bootstrap@googlegroups.com</p>
+
+<p>http://groups.google.com/group/twitter-bootstrap</p>
+
+<h2>IRC</h2>
+
+<p>Server: irc.freenode.net</p>
+
+<p>Channel: ##twitter-bootstrap (the double ## is not a typo)</p>
+
+<h2>Developers</h2>
+
+<p>We have included a makefile with convenience methods for working with the Bootstrap library.</p>
+
+<ul>
+<li><strong>dependencies</strong>
+Our makefile depends on you having recess, uglify.js, and jshint installed. To install, just run the following command in npm:</li>
+</ul>
+
+<p><code>
+$ npm install recess uglify-js jshint -g
+</code></p>
+
+<ul>
+<li><p><strong>build</strong> - <code>make</code>
+Runs the recess compiler to rebuild the <code>/less</code> files and compiles the docs pages. Requires recess and uglify-js. <a href="http://twitter.github.com/bootstrap/less.html#compiling">Read more in our docs &raquo;</a></p></li>
+<li><p><strong>test</strong> - <code>make test</code>
+Runs jshint and qunit tests headlessly in phantom js (used for ci). Depends on having phatomjs installed.</p></li>
+<li><p><strong>watch</strong> - <code>make watch</code>
+This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.</p></li>
+</ul>
+
+<h2>Contributing</h2>
+
+<p>Please make all pull requests against wip-* branches. Also, if your unit test contains javascript patches or features - you must include relevant unit tests. Thanks!</p>
+
+<h2>Authors</h2>
+
+<p><strong>Mark Otto</strong></p>
+
+<ul>
+<li>http://twitter.com/mdo</li>
+<li>http://github.com/markdotto</li>
+</ul>
+
+<p><strong>Jacob Thornton</strong></p>
+
+<ul>
+<li>http://twitter.com/fat</li>
+<li>http://github.com/fat</li>
+</ul>
+
+<h2>Copyright and license</h2>
+
+<p>Copyright 2012 Twitter, Inc.</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this work except in compliance with the License.
+You may obtain a copy of the License in the LICENSE file, or at:</p>
+
+<p>http://www.apache.org/licenses/LICENSE-2.0</p>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
+</td>
+<td>
+<!--content-->
+<div class="content">
+<h2 id="language_statistics_heading">Language Statistics</h2>
+<table id="code_stats">
+
+<tr>
+<td>100%</td>
+<td>JavaScript</td>
+<td><span data-lang="JavaScript"></span></td>
+<td style="width:400px;"><div><span data-lang="JavaScript" percent="100%" style="width:0%;"></span><span total="5234"></span></div></td>
+</tr>
+<tr>
+
+</table>
+<h2 id="recent_commits_heading">Recent Commits</h2>
+<ol id="recent_commits">
 
 
+<li>Update master, Mark Otto, <span relative_date="1339090286000"></span></li>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
-    <script src="assets/js/application.js"></script>
 
-    <!-- Analytics
-    ================================================== -->
-    <script>
-      var _gauges = _gauges || [];
-      (function() {
-        var t   = document.createElement('script');
-        t.type  = 'text/javascript';
-        t.async = true;
-        t.id    = 'gauges-tracker';
-        t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
-        t.src = '//secure.gaug.es/track.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(t, s);
-      })();
-    </script>
+<li>2.0.3 -> 2.0.4, Jacob Thornton, <span relative_date="1338573867000"></span></li>
 
-  </body>
+
+<li>Merge branch '2.0.4-wip', Jacob Thornton, <span relative_date="1338573227000"></span></li>
+
+
+<li>rebuild and fix test, Jacob Thornton, <span relative_date="1338485063000"></span></li>
+
+
+<li>Merge pull request #3655 from jorgenfb/8dda83906d72ade81ecf9b21d55b5a2922589d30, Jacob Thornton, <span relative_date="1338480233000"></span></li>
+
+</ol>
+<div id="filebrowser">
+<div id="breadcrumb"><span>bootstrap</span></div>
+<div id="filelists"><div depth="0" class="filelist"><table class="repo_nav"> <thead><tr><th></th><th>name</th><th class="size"><span>sloc</span>&nbsp;&nbsp;<span>size</span></th><th>age</th><th class="message"><span>message</span>&nbsp;&nbsp;<span>description</span><div class="history"><a target="_blank" href="https://github.com/joekychen/bootstrap/commits/master">history</a></div></th></tr></thead> <tbody>   <tr class="d"> <td class="icon"></td> <td><a forward>docs</a></td> <td class="size"><span>-</span><span>13 items</span></td> <td relative_date="1338573867000"></td> <td class="message"><div><span>2.0.3 -> 2.0.4</span><span class="file_browser_author" email="jacobthornton@gmail.com"> Jacob Thornton</span></div><div></div></td> </tr>  <tr class="d"> <td class="icon"></td> <td><a forward>img</a></td> <td class="size"><span>-</span><span>2 items</span></td> <td relative_date="1334447989000"></td> <td class="message"><div><span>fix #3032: update glyphicons sprite to 1.6 release</span><span class="file_browser_author" email="markotto@twitter.com"> Mark Otto</span></div><div></div></td> </tr>  <tr class="d"> <td class="icon"></td> <td><a forward>js</a></td> <td class="size"><span>-</span><span>15 items</span></td> <td relative_date="1338573867000"></td> <td class="message"><div><span>2.0.3 -> 2.0.4</span><span class="file_browser_author" email="jacobthornton@gmail.com"> Jacob Thornton</span></div><div></div></td> </tr>  <tr class="d"> <td class="icon"></td> <td><a forward>less</a></td> <td class="size"><span>-</span><span>41 items</span></td> <td relative_date="1338573867000"></td> <td class="message"><div><span>2.0.3 -> 2.0.4</span><span class="file_browser_author" email="jacobthornton@gmail.com"> Jacob Thornton</span></div><div></div></td> </tr>  <tr class="f"> <td class="icon"></td> <td><a href="https://github.com/joekychen/bootstrap/blob/master/LICENSE"target='_blank'>LICENSE</a></td> <td class="size"><span>-</span><span>9.9K</span></td> <td relative_date="1333844259000"></td> <td class="message"><div><span>Update the LICENSE to the actual APLv2</span><span class="file_browser_author" email="caniszczyk@gmail.com"> Chris Aniszczyk</span></div><div></div></td> </tr>  <tr class="f"> <td class="icon"></td> <td><a href="https://github.com/joekychen/bootstrap/blob/master/Makefile"target='_blank'>Makefile</a></td> <td class="size"><span>-</span><span>3.8K</span></td> <td relative_date="1335259305000"></td> <td class="message"><div><span>Merge branch '2.0.3-wip'  Conflicts: 	Makefile 	docs/assets/js/bootstrap.js 	docs/assets/js/bootstrap.min.js</span><span class="file_browser_author" email="jacobthornton@gmail.com"> Jacob Thornton</span></div><div></div></td> </tr>  <tr class="f markdown shown"> <td class="icon"></td> <td><a markdown="README.html">README.md</a></td> <td class="size"><span>73 lines</span><span>4.0K</span></td> <td relative_date="1339090286000"></td> <td class="message"><div><span>Update master</span><span class="file_browser_author" email="markdotto@gmail.com"> Mark Otto</span></div><div>README.md for project bootstrap</div></td> </tr>  <tr class="f"> <td class="icon"></td> <td><a href="https://github.com/joekychen/bootstrap/blob/master/package.json"target='_blank'>package.json</a></td> <td class="size"><span>-</span><span>623B</span></td> <td relative_date="1338573867000"></td> <td class="message"><div><span>2.0.3 -> 2.0.4</span><span class="file_browser_author" email="jacobthornton@gmail.com"> Jacob Thornton</span></div><div></div></td> </tr>  </tbody> </table> <div class="spinner"></div> </div></div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<script>docas={user:"joekychen",repo:"bootstrap"};document.write('<script src=' + ('__proto__' in {} ? 'http://cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js':'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js') + '><\/script>')</script>
+<script src="javascript/index.min.js"></script>
+</body>
 </html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html><head><title>joekychen/bootstrap » js › bootstrap-collapse.js
+
+</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Docco">
+<link rel="stylesheet" media="all" href="../stylesheets/docco.min.css" />
+
+
+</head>
+<body>
+<div id="container">
+<div id="background"></div>
+<table cellpadding="0" cellspacing="0">
+<thead><tr><th class="docs"><a id="home" href="../index.html"></a><h1>bootstrap-collapse.js</h1></th><th class="code"></th></tr></thead>
+<tbody>
+
+
+<tr id="section-1"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-1">&#182;</a></div></td><td class="code"><div class="highlight"><pre><span class="cm">/* =============================================================</span>
+<span class="cm"> * bootstrap-collapse.js v2.0.4</span>
+<span class="cm"> * http://twitter.github.com/bootstrap/javascript.html#collapse</span>
+<span class="cm"> * =============================================================</span>
+<span class="cm"> * Copyright 2012 Twitter, Inc.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="cm"> * you may not use this file except in compliance with the License.</span>
+<span class="cm"> * You may obtain a copy of the License at</span>
+<span class="cm"> *</span>
+<span class="cm"> * http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="cm"> *</span>
+<span class="cm"> * Unless required by applicable law or agreed to in writing, software</span>
+<span class="cm"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="cm"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="cm"> * See the License for the specific language governing permissions and</span>
+<span class="cm"> * limitations under the License.</span>
+<span class="cm"> * ============================================================ */</span>
+
+
+<span class="o">!</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="s2">&quot;use strict&quot;</span><span class="p">;</span> <span class="c1">// jshint ;_;</span>
+
+
+ <span class="cm">/* COLLAPSE PUBLIC CLASS DEFINITION</span>
+<span class="cm">  * ================================ */</span>
+
+  <span class="kd">var</span> <span class="nx">Collapse</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$element</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">collapse</span><span class="p">.</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$parent</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">parent</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">toggle</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">toggle</span><span class="p">()</span>
+  <span class="p">}</span>
+
+  <span class="nx">Collapse</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="nx">constructor</span><span class="o">:</span> <span class="nx">Collapse</span>
+
+  <span class="p">,</span> <span class="nx">dimension</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">hasWidth</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$element</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span>
+      <span class="k">return</span> <span class="nx">hasWidth</span> <span class="o">?</span> <span class="s1">&#39;width&#39;</span> <span class="o">:</span> <span class="s1">&#39;height&#39;</span>
+    <span class="p">}</span>
+
+  <span class="p">,</span> <span class="nx">show</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">dimension</span>
+        <span class="p">,</span> <span class="nx">scroll</span>
+        <span class="p">,</span> <span class="nx">actives</span>
+        <span class="p">,</span> <span class="nx">hasData</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">transitioning</span><span class="p">)</span> <span class="k">return</span>
+
+      <span class="nx">dimension</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dimension</span><span class="p">()</span>
+      <span class="nx">scroll</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">camelCase</span><span class="p">([</span><span class="s1">&#39;scroll&#39;</span><span class="p">,</span> <span class="nx">dimension</span><span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">))</span>
+      <span class="nx">actives</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$parent</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">$parent</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;&gt; .accordion-group &gt; .in&#39;</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">actives</span> <span class="o">&amp;&amp;</span> <span class="nx">actives</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">hasData</span> <span class="o">=</span> <span class="nx">actives</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;collapse&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">hasData</span> <span class="o">&amp;&amp;</span> <span class="nx">hasData</span><span class="p">.</span><span class="nx">transitioning</span><span class="p">)</span> <span class="k">return</span>
+        <span class="nx">actives</span><span class="p">.</span><span class="nx">collapse</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">)</span>
+        <span class="nx">hasData</span> <span class="o">||</span> <span class="nx">actives</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;collapse&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+      <span class="p">}</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">$element</span><span class="p">[</span><span class="nx">dimension</span><span class="p">](</span><span class="mi">0</span><span class="p">)</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">transition</span><span class="p">(</span><span class="s1">&#39;addClass&#39;</span><span class="p">,</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">),</span> <span class="s1">&#39;shown&#39;</span><span class="p">)</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$element</span><span class="p">[</span><span class="nx">dimension</span><span class="p">](</span><span class="k">this</span><span class="p">.</span><span class="nx">$element</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="nx">scroll</span><span class="p">])</span>
+    <span class="p">}</span>
+
+  <span class="p">,</span> <span class="nx">hide</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">dimension</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">transitioning</span><span class="p">)</span> <span class="k">return</span>
+      <span class="nx">dimension</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dimension</span><span class="p">()</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">reset</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$element</span><span class="p">[</span><span class="nx">dimension</span><span class="p">]())</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">transition</span><span class="p">(</span><span class="s1">&#39;removeClass&#39;</span><span class="p">,</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">),</span> <span class="s1">&#39;hidden&#39;</span><span class="p">)</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$element</span><span class="p">[</span><span class="nx">dimension</span><span class="p">](</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">}</span>
+
+  <span class="p">,</span> <span class="nx">reset</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">size</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">dimension</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dimension</span><span class="p">()</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">$element</span>
+        <span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;collapse&#39;</span><span class="p">)</span>
+        <span class="p">[</span><span class="nx">dimension</span><span class="p">](</span><span class="nx">size</span> <span class="o">||</span> <span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">offsetWidth</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">$element</span><span class="p">[</span><span class="nx">size</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">?</span> <span class="s1">&#39;addClass&#39;</span> <span class="o">:</span> <span class="s1">&#39;removeClass&#39;</span><span class="p">](</span><span class="s1">&#39;collapse&#39;</span><span class="p">)</span>
+
+      <span class="k">return</span> <span class="k">this</span>
+    <span class="p">}</span>
+
+  <span class="p">,</span> <span class="nx">transition</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">method</span><span class="p">,</span> <span class="nx">startEvent</span><span class="p">,</span> <span class="nx">completeEvent</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span>
+        <span class="p">,</span> <span class="nx">complete</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">startEvent</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;show&#39;</span><span class="p">)</span> <span class="nx">that</span><span class="p">.</span><span class="nx">reset</span><span class="p">()</span>
+            <span class="nx">that</span><span class="p">.</span><span class="nx">transitioning</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="nx">that</span><span class="p">.</span><span class="nx">$element</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">completeEvent</span><span class="p">)</span>
+          <span class="p">}</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">$element</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">startEvent</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">startEvent</span><span class="p">.</span><span class="nx">isDefaultPrevented</span><span class="p">())</span> <span class="k">return</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">transitioning</span> <span class="o">=</span> <span class="mi">1</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">$element</span><span class="p">[</span><span class="nx">method</span><span class="p">](</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+
+      <span class="nx">$</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">transition</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">$element</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;collapse&#39;</span><span class="p">)</span> <span class="o">?</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">$element</span><span class="p">.</span><span class="nx">one</span><span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">transition</span><span class="p">.</span><span class="nx">end</span><span class="p">,</span> <span class="nx">complete</span><span class="p">)</span> <span class="o">:</span>
+        <span class="nx">complete</span><span class="p">()</span>
+    <span class="p">}</span>
+
+  <span class="p">,</span> <span class="nx">toggle</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">$element</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="s1">&#39;hide&#39;</span> <span class="o">:</span> <span class="s1">&#39;show&#39;</span><span class="p">]()</span>
+    <span class="p">}</span>
+
+  <span class="p">}</span>
+
+
+ <span class="cm">/* COLLAPSIBLE PLUGIN DEFINITION</span>
+<span class="cm">  * ============================== */</span>
+
+  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">collapse</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">option</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">$this</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+        <span class="p">,</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;collapse&#39;</span><span class="p">)</span>
+        <span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="k">typeof</span> <span class="nx">option</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">option</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">)</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;collapse&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Collapse</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">options</span><span class="p">)))</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">option</span> <span class="o">==</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span> <span class="nx">data</span><span class="p">[</span><span class="nx">option</span><span class="p">]()</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+
+  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">collapse</span><span class="p">.</span><span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">toggle</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+
+  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">collapse</span><span class="p">.</span><span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">Collapse</span>
+
+
+ <span class="cm">/* COLLAPSIBLE DATA-API</span>
+<span class="cm">  * ==================== */</span>
+
+  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click.collapse.data-api&#39;</span><span class="p">,</span> <span class="s1">&#39;[data-toggle=collapse]&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">e</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">$this</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="nx">href</span>
+        <span class="p">,</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;data-target&#39;</span><span class="p">)</span>
+          <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+          <span class="o">||</span> <span class="p">(</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="nx">href</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/.*(?=#[^\s]+$)/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1">//strip for ie7</span>
+        <span class="p">,</span> <span class="nx">option</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">target</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;collapse&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="s1">&#39;toggle&#39;</span> <span class="o">:</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">data</span><span class="p">()</span>
+      <span class="nx">$</span><span class="p">(</span><span class="nx">target</span><span class="p">).</span><span class="nx">collapse</span><span class="p">(</span><span class="nx">option</span><span class="p">)</span>
+    <span class="p">})</span>
+  <span class="p">})</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">);</span>
+
+</pre></div></td></tr>
+
+</tbody>
+</table>
+</div>
+
+</body>
+<script>docas={repo:"joekychen/bootstrap",depth:1}</script>
+<script>document.write('<script src=' + ('__proto__' in {} ? 'http://cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js' : 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')+'><\\/script>')</script>
+<script src="http://baoshan.github.com/moment/min/moment.min.js"></script>
+<script src="../javascript/docco.min.js"></script>
+</html>

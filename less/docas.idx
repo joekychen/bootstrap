@@ -1,0 +1,41 @@
+f | responsive-1200px-min.less | g | 393B |  | Mark Otto | markotto@twitter.com | 1335275121 |  | restore margins on thumbnails, add comments about it's changes and how responsive affects it
+f | responsive-768px-979px.less | g | 364B |  | Mark Otto | markotto@twitter.com | 1335275121 |  | restore margins on thumbnails, add comments about it's changes and how responsive affects it
+f | grid.less | g | 147B |  | Jacob Thornton | jacobthornton@gmail.com | 1329894966 |  | rewrite the grid system. Clean shit up tons - only generate 12 columns by default - custom builder will do differently if you request it.
+f | progress-bars.less | g | 2.4K |  | Mark Otto | markotto@twitter.com | 1332659229 |  | Merge branch 'andreasbovens-master' into 2.0.3-wip
+f | navbar.less | g | 8.2K |  | Corey Innis | corey@coolerator.net | 1338167528 |  | fixes .placeholder to work as a "grouped selector"  adding the `&` combinator to `.placeholder` makes it work for the global case (in forms.less) as well as within `.navbar-search .search-query`  the result can be seen in the generated bootstrap.css, which include the -ms vendor extension.
+f | responsive.less | g | 1.0K |  | Jacob Thornton | jacobthornton@gmail.com | 1338573867 |  | 2.0.3 -> 2.0.4
+f | component-animations.less | g | 272B |  | Tomás Arribas | tomas.arribas@buenostalleres.com | 1337561817 |  | Do not use filters in fade animations
+f | responsive-utilities.less | g | 1.1K |  | Mark Otto | markotto@twitter.com | 1332663171 |  | Overhaul the responsive utility classes:  1. Rename file from responsive-utility-classes.less to responsive-utilities.less 2. Add additional help text around the documentation for the classes in Scaffolding 3. Remove unnecessary display values on initial classes 4. Drop block values for inherit for better support on inline and table elements 5. Make use of \!important on every class to avoid classes with more specific selectors (e.g., .span* classes for the grid)
+f | scaffolding.less | g | 549B |  | Mark Otto | markotto@twitter.com | 1330936156 |  | add a ton new variables for type, buttons, inputs
+f | pagination.less | g | 1.0K |  | Mark Otto | markotto@twitter.com | 1329724319 |  | enable use of span in place of a for .disabled in pagination, per #1406
+f | button-groups.less | g | 4.7K |  | Mark Otto | markotto@twitter.com | 1335257180 |  | fix ie7 button group toggles and button borders
+f | popovers.less | g | 1.1K |  | Mark Otto | markdotto@gmail.com | 1327915251 |  | namespace popover values
+f | mixins.less | g | 19K |  | Corey Innis | corey@coolerator.net | 1338167528 |  | fixes .placeholder to work as a "grouped selector"  adding the `&` combinator to `.placeholder` makes it work for the global case (in forms.less) as well as within `.navbar-search .search-query`  the result can be seen in the generated bootstrap.css, which include the -ms vendor extension.
+f | code.less | g | 1.2K |  | Jacob Thornton | jacobthornton@gmail.com | 1334619248 |  | lots of property ordering
+f | reset.less | g | 2.5K |  | Mark Otto | markotto@twitter.com | 1337915932 |  | make bootstrap like google maps a bit more
+f | tooltip.less | g | 803B |  | Jacob Thornton | jacobthornton@gmail.com | 1327643326 |  | moving structure around + more work on builder...
+f | close.less | g | 590B |  | Mark Otto | markotto@twitter.com | 1335275121 |  | restore margins on thumbnails, add comments about it's changes and how responsive affects it
+f | thumbnails.less | g | 1.0K |  | Mark Otto | markotto@twitter.com | 1335275121 |  | restore margins on thumbnails, add comments about it's changes and how responsive affects it
+f | wells.less | g | 451B |  | Mark Otto | markotto@twitter.com | 1331097163 |  | adding well sizes
+d | tests |  | 4 items |  | Mark Otto | markotto@twitter.com | 1338251544 |  | fix broken css tests, add fluid input-prepend/-append to tests, fix input-prepend/append for responsive for both fluid and fixed sizing
+f | navs.less | g | 6.9K |  | Mark Otto | markotto@twitter.com | 1334468606 |  | Merge branch '2.0.3-wip-nav-collapse' of https://github.com/tierra/bootstrap into tierra-2.0.3-wip-nav-collapse  Conflicts: 	docs/assets/bootstrap.zip
+f | layouts.less | g | 371B |  | Jacob Thornton | jacobthornton@gmail.com | 1334615837 |  | few more property orders
+f | pager.less | g | 567B |  | Dave Wasmer | davewasmer@gmail.com | 1330472375 |  | Added disabled styles to pager
+f | responsive-navbar.less | g | 3.3K |  | Mark Otto | markotto@twitter.com | 1336972295 |  | #3257: share .navbar-fixed-top styles with .navbar-fixed-bottom
+f | forms.less | g | 12K |  | Mark Otto | markotto@twitter.com | 1338251544 |  | fix broken css tests, add fluid input-prepend/-append to tests, fix input-prepend/append for responsive for both fluid and fixed sizing
+f | hero-unit.less | g | 404B |  | Mark Otto | markotto@twitter.com | 1331424066 |  | massive update to customize page to include all the new variables (and ensure they're being used in the .less files)
+f | breadcrumbs.less | g | 443B |  | Mark Otto | markotto@twitter.com | 1330936617 |  | fix ie7 breadcrumbs per #2224
+f | utilities.less | g | 245B |  | Jacob Thornton | jacobthornton@gmail.com | 1327643326 |  | moving structure around + more work on builder...
+f | alerts.less | g | 1.0K |  | Jacob Rask | jacob@jacobrask.net | 1329683372 |  | Use inherit on alert-heading color  Heading then inherits from the parent alert. Avoids a lot of extra unneccessary CSS.
+f | responsive-767px-max.less | g | 3.0K |  | Mark Otto | markotto@twitter.com | 1333867269 |  | add larger .input-* to block reset for responsive <767
+f | carousel.less | g | 1.8K |  | Mark Otto | markdotto@gmail.com | 1327943965 |  | large carousel images and margin bottom added
+f | tables.less | g | 4.3K |  | Jacob Thornton | jacobthornton@gmail.com | 1334619248 |  | lots of property ordering
+f | labels-badges.less | g | 1.5K |  | Mark Otto | markotto@twitter.com | 1334767650 |  | fix #3111, badge and label alignment with surrounding text
+f | variables.less | g | 5.9K |  | Mark Otto | markotto@twitter.com | 1336942722 |  | #3469: add variables for dropdown menu dividers
+f | buttons.less | g | 4.2K |  | Mark Otto | markotto@twitter.com | 1335257180 |  | fix ie7 button group toggles and button borders
+f | accordion.less | g | 578B |  | Mark Otto | markotto@twitter.com | 1335255804 |  | fix #3202: add cursor to .accordion-toggle
+f | dropdowns.less | g | 3.1K |  | Mark Otto | markotto@twitter.com | 1338192804 |  | scope float right dropdown menus to immediate children
+f | type.less | g | 3.5K |  | Mark Otto | markotto@twitter.com | 1337756713 |  | Merge branch 'pvorb-patch-1' into 2.0.4-wip
+f | sprites.less | g | 9.7K |  | Jacob Thornton | jacobthornton@gmail.com | 1334619248 |  | lots of property ordering
+f | modals.less | g | 2.0K |  | Alec Rust | me@alecrust.com | 1333293943 |  | Corrected "resises" to "resides"
+f | bootstrap.less | g | 1.4K |  | Jacob Thornton | jacobthornton@gmail.com | 1338573867 |  | 2.0.3 -> 2.0.4

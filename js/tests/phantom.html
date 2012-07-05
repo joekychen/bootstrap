@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html><head><title>joekychen/bootstrap » js › tests › phantom.js
+
+</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Docco">
+<link rel="stylesheet" media="all" href="../../stylesheets/docco.min.css" />
+
+
+</head>
+<body>
+<div id="container">
+<div id="background"></div>
+<table cellpadding="0" cellspacing="0">
+<thead><tr><th class="docs"><a id="home" href="../../index.html"></a><h1>phantom.js</h1></th><th class="code"></th></tr></thead>
+<tbody>
+
+
+<tr id="section-1"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-1">&#182;</a></div><p>Simple phantom.js integration script
+Adapted from Modernizr</p></td><td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">waitFor</span><span class="p">(</span><span class="nx">testFx</span><span class="p">,</span> <span class="nx">onReady</span><span class="p">,</span> <span class="nx">timeOutMillis</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">maxtimeOutMillis</span> <span class="o">=</span> <span class="nx">timeOutMillis</span> <span class="o">?</span> <span class="nx">timeOutMillis</span> <span class="o">:</span>  <span class="mi">5001</span> <span class="c1">//&lt; Default Max Timout is 5s</span>
+    <span class="p">,</span> <span class="nx">start</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span>
+    <span class="p">,</span> <span class="nx">condition</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="p">,</span> <span class="nx">interval</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">((</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">-</span> <span class="nx">start</span> <span class="o">&lt;</span> <span class="nx">maxtimeOutMillis</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">condition</span><span class="p">)</span> <span class="p">{</span></pre></div></td></tr>
+
+
+<tr id="section-2"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-2">&#182;</a></div><p>If not time-out yet and condition not yet fulfilled</p></td><td class="code"><div class="highlight"><pre>          <span class="nx">condition</span> <span class="o">=</span> <span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">testFx</span><span class="p">)</span> <span class="o">===</span> <span class="s2">&quot;string&quot;</span> <span class="o">?</span> <span class="nb">eval</span><span class="p">(</span><span class="nx">testFx</span><span class="p">)</span> <span class="o">:</span> <span class="nx">testFx</span><span class="p">())</span> <span class="c1">//&lt; defensive code</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">condition</span><span class="p">)</span> <span class="p">{</span></pre></div></td></tr>
+
+
+<tr id="section-3"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-3">&#182;</a></div><p>If condition still not fulfilled (timeout but condition is 'false')</p></td><td class="code"><div class="highlight"><pre>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;&#39;waitFor()&#39; timeout&quot;</span><span class="p">)</span>
+            <span class="nx">phantom</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></pre></div></td></tr>
+
+
+<tr id="section-4"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-4">&#182;</a></div><p>Condition fulfilled (timeout and/or condition is 'true')</p></td><td class="code"><div class="highlight"><pre>            <span class="k">typeof</span><span class="p">(</span><span class="nx">onReady</span><span class="p">)</span> <span class="o">===</span> <span class="s2">&quot;string&quot;</span> <span class="o">?</span> <span class="nb">eval</span><span class="p">(</span><span class="nx">onReady</span><span class="p">)</span> <span class="o">:</span> <span class="nx">onReady</span><span class="p">()</span> <span class="c1">//&lt; Do what it&#39;s supposed to do once the condition is fulfilled</span>
+            <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">interval</span><span class="p">)</span> <span class="c1">//&lt; Stop this interval</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">//&lt; repeat check every 100ms</span>
+<span class="p">}</span>
+
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">phantom</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">phantom</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Usage: phantom.js URL&#39;</span><span class="p">)</span>
+  <span class="nx">phantom</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebPage</span><span class="p">()</span></pre></div></td></tr>
+
+
+<tr id="section-5"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-5">&#182;</a></div><p>Route "console.log()" calls from within the Page context to the main Phantom context (i.e. current "this")</p></td><td class="code"><div class="highlight"><pre><span class="nx">page</span><span class="p">.</span><span class="nx">onConsoleMessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+<span class="p">};</span>
+
+<span class="nx">page</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">phantom</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">status</span><span class="p">){</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">status</span> <span class="o">!==</span> <span class="s2">&quot;success&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Unable to access network&quot;</span><span class="p">)</span>
+    <span class="nx">phantom</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">waitFor</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+      <span class="k">return</span> <span class="nx">page</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;qunit-testresult&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">el</span> <span class="o">&amp;&amp;</span> <span class="nx">el</span><span class="p">.</span><span class="nx">innerText</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="s1">&#39;completed&#39;</span><span class="p">))</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="kc">true</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">false</span>
+      <span class="p">})</span>
+    <span class="p">},</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="kd">var</span> <span class="nx">failedNum</span> <span class="o">=</span> <span class="nx">page</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;qunit-testresult&#39;</span><span class="p">)</span>
+        <span class="k">try</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">el</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s1">&#39;failed&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">innerHTML</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+        <span class="k">return</span> <span class="mi">10000</span>
+      <span class="p">});</span>
+      <span class="nx">phantom</span><span class="p">.</span><span class="nx">exit</span><span class="p">((</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">failedNum</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+</pre></div></td></tr>
+
+</tbody>
+</table>
+</div>
+
+</body>
+<script>docas={repo:"joekychen/bootstrap",depth:2}</script>
+<script>document.write('<script src=' + ('__proto__' in {} ? 'http://cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js' : 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')+'><\\/script>')</script>
+<script src="http://baoshan.github.com/moment/min/moment.min.js"></script>
+<script src="../../javascript/docco.min.js"></script>
+</html>

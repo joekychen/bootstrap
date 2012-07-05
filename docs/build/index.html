@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html><head><title>joekychen/bootstrap » docs › build › index.js
+
+</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Docco">
+<link rel="stylesheet" media="all" href="../../stylesheets/docco.min.css" />
+
+
+</head>
+<body>
+<div id="container">
+<div id="background"></div>
+<table cellpadding="0" cellspacing="0">
+<thead><tr><th class="docs"><a id="home" href="../../index.html"></a><h1>index.js</h1></th><th class="code"></th></tr></thead>
+<tbody>
+
+
+<tr id="section-1"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-1">&#182;</a></div></td><td class="code"><div class="highlight"><pre><span class="err">#</span><span class="o">!</span><span class="err">/usr/bin/env node</span>
+<span class="kd">var</span> <span class="nx">hogan</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;hogan.js&#39;</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">fs</span>    <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">prod</span>  <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;production&#39;</span>
+  <span class="p">,</span> <span class="nx">title</span> <span class="o">=</span> <span class="s1">&#39;Twitter Bootstrap&#39;</span>
+
+<span class="kd">var</span> <span class="nx">layout</span><span class="p">,</span> <span class="nx">pages</span></pre></div></td></tr>
+
+
+<tr id="section-2"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-2">&#182;</a></div><p>compile layout template</p></td><td class="code"><div class="highlight"><pre><span class="nx">layout</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/../templates/layout.mustache&#39;</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="nx">layout</span> <span class="o">=</span> <span class="nx">hogan</span><span class="p">.</span><span class="nx">compile</span><span class="p">(</span><span class="nx">layout</span><span class="p">,</span> <span class="p">{</span> <span class="nx">sectionTags</span><span class="o">:</span> <span class="p">[{</span><span class="nx">o</span><span class="o">:</span><span class="s1">&#39;_i&#39;</span><span class="p">,</span> <span class="nx">c</span><span class="o">:</span><span class="s1">&#39;i&#39;</span><span class="p">}]</span> <span class="p">})</span></pre></div></td></tr>
+
+
+<tr id="section-3"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-3">&#182;</a></div><p>retrieve pages</p></td><td class="code"><div class="highlight"><pre><span class="nx">pages</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readdirSync</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/../templates/pages&#39;</span><span class="p">)</span></pre></div></td></tr>
+
+
+<tr id="section-4"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-4">&#182;</a></div><p>iterate over pages</p></td><td class="code"><div class="highlight"><pre><span class="nx">pages</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">name</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\.mustache$/</span><span class="p">))</span> <span class="k">return</span>
+
+  <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">__dirname</span>  <span class="o">+</span> <span class="s1">&#39;/../templates/pages/&#39;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="p">,</span> <span class="nx">context</span> <span class="o">=</span> <span class="p">{}</span>
+
+  <span class="nx">context</span><span class="p">[</span><span class="nx">name</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\.mustache$/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span>
+  <span class="nx">context</span><span class="p">.</span><span class="nx">_i</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="nx">context</span><span class="p">.</span><span class="nx">production</span> <span class="o">=</span> <span class="nx">prod</span>
+  <span class="nx">context</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">name</span>
+    <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\.mustache/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\-.*/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/(.)/</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$1</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">$1</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span> <span class="p">})</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">title</span> <span class="o">==</span> <span class="s1">&#39;Index&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">title</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">title</span> <span class="o">+=</span> <span class="s1">&#39; · &#39;</span> <span class="o">+</span> <span class="nx">title</span>
+  <span class="p">}</span>
+
+  <span class="nx">page</span> <span class="o">=</span> <span class="nx">hogan</span><span class="p">.</span><span class="nx">compile</span><span class="p">(</span><span class="nx">page</span><span class="p">,</span> <span class="p">{</span> <span class="nx">sectionTags</span><span class="o">:</span> <span class="p">[{</span><span class="nx">o</span><span class="o">:</span><span class="s1">&#39;_i&#39;</span><span class="p">,</span> <span class="nx">c</span><span class="o">:</span><span class="s1">&#39;i&#39;</span><span class="p">}]</span> <span class="p">})</span>
+  <span class="nx">page</span> <span class="o">=</span> <span class="nx">layout</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">body</span><span class="o">:</span> <span class="nx">page</span>
+  <span class="p">})</span>
+
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFileSync</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/../&#39;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/mustache$/</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">),</span> <span class="nx">page</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="p">})</span>
+
+</pre></div></td></tr>
+
+</tbody>
+</table>
+</div>
+
+</body>
+<script>docas={repo:"joekychen/bootstrap",depth:2}</script>
+<script>document.write('<script src=' + ('__proto__' in {} ? 'http://cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js' : 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')+'><\\/script>')</script>
+<script src="http://baoshan.github.com/moment/min/moment.min.js"></script>
+<script src="../../javascript/docco.min.js"></script>
+</html>

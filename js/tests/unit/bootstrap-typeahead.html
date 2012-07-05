@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html><head><title>joekychen/bootstrap » js › tests › unit › bootstrap-typeahead.js
+
+</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Docco">
+<link rel="stylesheet" media="all" href="../../../stylesheets/docco.min.css" />
+
+
+</head>
+<body>
+<div id="container">
+<div id="background"></div>
+<table cellpadding="0" cellspacing="0">
+<thead><tr><th class="docs"><a id="home" href="../../../index.html"></a><h1>bootstrap-typeahead.js</h1></th><th class="code"></th></tr></thead>
+<tbody>
+
+
+<tr id="section-1"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#section-1">&#182;</a></div></td><td class="code"><div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="nx">module</span><span class="p">(</span><span class="s2">&quot;bootstrap-typeahead&quot;</span><span class="p">)</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should be defined on jquery object&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">typeahead</span><span class="p">,</span> <span class="s1">&#39;alert method is defined&#39;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should return element&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">typeahead</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="s1">&#39;document.body returned&#39;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should listen to an input&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input /&gt;&#39;</span><span class="p">)</span>
+        <span class="nx">$input</span><span class="p">.</span><span class="nx">typeahead</span><span class="p">()</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">).</span><span class="nx">blur</span><span class="p">,</span> <span class="s1">&#39;has a blur event&#39;</span><span class="p">)</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">).</span><span class="nx">keypress</span><span class="p">,</span> <span class="s1">&#39;has a keypress event&#39;</span><span class="p">)</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">).</span><span class="nx">keyup</span><span class="p">,</span> <span class="s1">&#39;has a keyup event&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">webkit</span> <span class="o">||</span> <span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">ok</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">).</span><span class="nx">keydown</span><span class="p">,</span> <span class="s1">&#39;has a keydown event&#39;</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">ok</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">).</span><span class="nx">keydown</span><span class="p">,</span> <span class="s1">&#39;does not have a keydown event&#39;</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should create a menu&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input /&gt;&#39;</span><span class="p">)</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">typeahead</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;typeahead&#39;</span><span class="p">).</span><span class="nx">$menu</span><span class="p">,</span> <span class="s1">&#39;has a menu&#39;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should listen to the menu&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input /&gt;&#39;</span><span class="p">)</span>
+          <span class="p">,</span> <span class="nx">$menu</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">typeahead</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;typeahead&#39;</span><span class="p">).</span><span class="nx">$menu</span>
+
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">).</span><span class="nx">mouseover</span><span class="p">,</span> <span class="s1">&#39;has a mouseover(pseudo: mouseenter)&#39;</span><span class="p">)</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">,</span> <span class="s1">&#39;has a click&#39;</span><span class="p">)</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should show menu when query entered&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input /&gt;&#39;</span><span class="p">).</span><span class="nx">typeahead</span><span class="p">({</span>
+              <span class="nx">source</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">]</span>
+            <span class="p">})</span>
+          <span class="p">,</span> <span class="nx">typeahead</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;typeahead&#39;</span><span class="p">)</span>
+
+        <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+        <span class="nx">typeahead</span><span class="p">.</span><span class="nx">lookup</span><span class="p">()</span>
+
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="s2">&quot;:visible&quot;</span><span class="p">),</span> <span class="s1">&#39;typeahead is visible&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;has 3 items in menu&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.active&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;one item is active&#39;</span><span class="p">)</span>
+
+        <span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should not explode when regex chars are entered&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input /&gt;&#39;</span><span class="p">).</span><span class="nx">typeahead</span><span class="p">({</span>
+              <span class="nx">source</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">,</span> <span class="s1">&#39;mdo*&#39;</span><span class="p">,</span> <span class="s1">&#39;fat+&#39;</span><span class="p">]</span>
+            <span class="p">})</span>
+          <span class="p">,</span> <span class="nx">typeahead</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;typeahead&#39;</span><span class="p">)</span>
+
+        <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">)</span>
+        <span class="nx">typeahead</span><span class="p">.</span><span class="nx">lookup</span><span class="p">()</span>
+
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="s2">&quot;:visible&quot;</span><span class="p">),</span> <span class="s1">&#39;typeahead is visible&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;has 1 item in menu&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.active&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;one item is active&#39;</span><span class="p">)</span>
+
+        <span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should hide menu when query entered&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">stop</span><span class="p">()</span>
+        <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input /&gt;&#39;</span><span class="p">).</span><span class="nx">typeahead</span><span class="p">({</span>
+              <span class="nx">source</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">]</span>
+            <span class="p">})</span>
+          <span class="p">,</span> <span class="nx">typeahead</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;typeahead&#39;</span><span class="p">)</span>
+
+        <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+        <span class="nx">typeahead</span><span class="p">.</span><span class="nx">lookup</span><span class="p">()</span>
+
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="s2">&quot;:visible&quot;</span><span class="p">),</span> <span class="s1">&#39;typeahead is visible&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;has 3 items in menu&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.active&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;one item is active&#39;</span><span class="p">)</span>
+
+        <span class="nx">$input</span><span class="p">.</span><span class="nx">blur</span><span class="p">()</span>
+
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">ok</span><span class="p">(</span><span class="o">!</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="s2">&quot;:visible&quot;</span><span class="p">),</span> <span class="s2">&quot;typeahead is no longer visible&quot;</span><span class="p">)</span>
+          <span class="nx">start</span><span class="p">()</span>
+        <span class="p">},</span> <span class="mi">200</span><span class="p">)</span>
+
+        <span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+      <span class="p">})</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should set next item when down arrow is pressed&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input /&gt;&#39;</span><span class="p">).</span><span class="nx">typeahead</span><span class="p">({</span>
+              <span class="nx">source</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">]</span>
+            <span class="p">})</span>
+          <span class="p">,</span> <span class="nx">typeahead</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;typeahead&#39;</span><span class="p">)</span>
+
+        <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+        <span class="nx">typeahead</span><span class="p">.</span><span class="nx">lookup</span><span class="p">()</span>
+
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="s2">&quot;:visible&quot;</span><span class="p">),</span> <span class="s1">&#39;typeahead is visible&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;has 3 items in menu&#39;</span><span class="p">)</span>
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.active&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;one item is active&#39;</span><span class="p">)</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">).</span><span class="nx">first</span><span class="p">().</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">),</span> <span class="s2">&quot;first item is active&quot;</span><span class="p">)</span>
+
+        <span class="nx">$input</span><span class="p">.</span><span class="nx">trigger</span><span class="p">({</span>
+          <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;keydown&#39;</span>
+        <span class="p">,</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="mi">40</span>
+        <span class="p">})</span>
+
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">).</span><span class="nx">first</span><span class="p">().</span><span class="nx">next</span><span class="p">().</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">),</span> <span class="s2">&quot;second item is active&quot;</span><span class="p">)</span>
+
+
+        <span class="nx">$input</span><span class="p">.</span><span class="nx">trigger</span><span class="p">({</span>
+          <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;keydown&#39;</span>
+        <span class="p">,</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="mi">38</span>
+        <span class="p">})</span>
+
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">).</span><span class="nx">first</span><span class="p">().</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">),</span> <span class="s2">&quot;first item is active&quot;</span><span class="p">)</span>
+
+        <span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+      <span class="p">})</span>
+
+
+      <span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should set input value to selected item&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input /&gt;&#39;</span><span class="p">).</span><span class="nx">typeahead</span><span class="p">({</span>
+              <span class="nx">source</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;ac&#39;</span><span class="p">]</span>
+            <span class="p">})</span>
+          <span class="p">,</span> <span class="nx">typeahead</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;typeahead&#39;</span><span class="p">)</span>
+          <span class="p">,</span> <span class="nx">changed</span> <span class="o">=</span> <span class="kc">false</span>
+
+        <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+        <span class="nx">typeahead</span><span class="p">.</span><span class="nx">lookup</span><span class="p">()</span>
+
+        <span class="nx">$input</span><span class="p">.</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">changed</span> <span class="o">=</span> <span class="kc">true</span> <span class="p">});</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]).</span><span class="nx">mouseover</span><span class="p">().</span><span class="nx">click</span><span class="p">()</span>
+
+        <span class="nx">equals</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(),</span> <span class="s1">&#39;ac&#39;</span><span class="p">,</span> <span class="s1">&#39;input value was correctly set&#39;</span><span class="p">)</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="o">!</span><span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="s1">&#39;:visible&#39;</span><span class="p">),</span> <span class="s1">&#39;the menu was hidden&#39;</span><span class="p">)</span>
+        <span class="nx">ok</span><span class="p">(</span><span class="nx">changed</span><span class="p">,</span> <span class="s1">&#39;a change event was fired&#39;</span><span class="p">)</span>
+
+        <span class="nx">typeahead</span><span class="p">.</span><span class="nx">$menu</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+      <span class="p">})</span>
+<span class="p">})</span>
+
+</pre></div></td></tr>
+
+</tbody>
+</table>
+</div>
+
+</body>
+<script>docas={repo:"joekychen/bootstrap",depth:3}</script>
+<script>document.write('<script src=' + ('__proto__' in {} ? 'http://cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js' : 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')+'><\\/script>')</script>
+<script src="http://baoshan.github.com/moment/min/moment.min.js"></script>
+<script src="../../../javascript/docco.min.js"></script>
+</html>
