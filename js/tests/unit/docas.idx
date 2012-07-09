@@ -8,6 +8,6 @@ f | bootstrap-popover.js | s | 3.4K | 75 | Mark Otto | markdotto@gmail.com | 132
 f | bootstrap-dropdown.js | s | 3.5K | 76 | Jacob Thornton | jacobthornton@gmail.com | 1334465097 |  | don't open dropdown if target is disabled
 f | bootstrap-phantom.js | s | 714B | 18 | Jacob Thornton | jacobthornton@gmail.com | 1334882458 |  | style changes to phantom integration
 f | bootstrap-tab.js | s | 1.9K | 47 | Jacob Thornton | jacobthornton@gmail.com | 1332638409 |  | add preventDefault support for all inital event types (show, close, hide, etc.) + fix small bug with scrollspy.last
-f | bootstrap-modal.js | s | 3.5K | 103 | Jacob Thornton | jacobthornton@gmail.com | 1332636621 |  | allow prevent default for show and hide event in modal
 f | bootstrap-scrollspy.js | s | 972B | 25 | Jacob Thornton | jacobthornton@gmail.com | 1324432967 |  | giant refactor - all spec passing again...
+f | bootstrap-modal.js | s | 3.5K | 103 | Jacob Thornton | jacobthornton@gmail.com | 1332636621 |  | allow prevent default for show and hide event in modal
 f | bootstrap-typeahead.js | s | 4.7K | 111 | Jacob Thornton | jacobthornton@gmail.com | 1334446340 |  | fix typeahead test
