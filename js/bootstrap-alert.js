@@ -1,4 +1,4 @@
-/*    bootstrap-alert.js v2.0.3-2.0.4 */
+#    bootstrap-alert.js v2.0.3-2.0.4
 
 /* ==========================================================
  * bootstrap-alert.js v2.0.4
