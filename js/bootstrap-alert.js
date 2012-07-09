@@ -1,4 +1,4 @@
-#    bootstrap-alert.js v2.0.3-2.0.4
+#   alert definition and alert data-API 
 
 /* ==========================================================
  * bootstrap-alert.js v2.0.4
@@ -18,7 +18,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-
 
 !function ($) {
 
