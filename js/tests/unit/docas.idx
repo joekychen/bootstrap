@@ -1,13 +1,13 @@
-f | bootstrap-button.js | s | 2.8K | 68 | Jacob Thornton | jacobthornton@gmail.com | 1329636598 |  | fix bootstrap-button toggle regression + tests
-f | bootstrap-alert.js | s | 1.8K | 43 | Jacob Thornton | jacobthornton@gmail.com | 1332638409 |  | add preventDefault support for all inital event types (show, close, hide, etc.) + fix small bug with scrollspy.last
 f | bootstrap-transition.js | s | 374B | 9 | Jacob Thornton | jacobthornton@gmail.com | 1334446193 |  | add jshint support + a few minor stylistic changes
+f | bootstrap-alert.js | s | 1.8K | 43 | Jacob Thornton | jacobthornton@gmail.com | 1332638409 |  | add preventDefault support for all inital event types (show, close, hide, etc.) + fix small bug with scrollspy.last
+f | bootstrap-button.js | s | 2.8K | 68 | Jacob Thornton | jacobthornton@gmail.com | 1329636598 |  | fix bootstrap-button toggle regression + tests
 f | bootstrap-carousel.js | s | 745B | 23 | Jacob Thornton | jacobthornton@gmail.com | 1332638409 |  | add preventDefault support for all inital event types (show, close, hide, etc.) + fix small bug with scrollspy.last
-f | bootstrap-collapse.js | s | 1.7K | 46 | Jacob Thornton | jacobthornton@gmail.com | 1335316001 |  | fix regression in resetting collapse to auto on collapse open. (+ add spec and rebuild)
 f | bootstrap-tooltip.js | s | 5.9K | 126 | Jacob Thornton | jacobthornton@gmail.com | 1338485063 |  | rebuild and fix test
 f | bootstrap-popover.js | s | 3.4K | 75 | Mark Otto | markdotto@gmail.com | 1327915818 |  | update tests for popover to use proper classes
+f | bootstrap-collapse.js | s | 1.7K | 46 | Jacob Thornton | jacobthornton@gmail.com | 1335316001 |  | fix regression in resetting collapse to auto on collapse open. (+ add spec and rebuild)
 f | bootstrap-dropdown.js | s | 3.5K | 76 | Jacob Thornton | jacobthornton@gmail.com | 1334465097 |  | don't open dropdown if target is disabled
 f | bootstrap-phantom.js | s | 714B | 18 | Jacob Thornton | jacobthornton@gmail.com | 1334882458 |  | style changes to phantom integration
 f | bootstrap-tab.js | s | 1.9K | 47 | Jacob Thornton | jacobthornton@gmail.com | 1332638409 |  | add preventDefault support for all inital event types (show, close, hide, etc.) + fix small bug with scrollspy.last
-f | bootstrap-modal.js | s | 3.5K | 103 | Jacob Thornton | jacobthornton@gmail.com | 1332636621 |  | allow prevent default for show and hide event in modal
 f | bootstrap-scrollspy.js | s | 972B | 25 | Jacob Thornton | jacobthornton@gmail.com | 1324432967 |  | giant refactor - all spec passing again...
+f | bootstrap-modal.js | s | 3.5K | 103 | Jacob Thornton | jacobthornton@gmail.com | 1332636621 |  | allow prevent default for show and hide event in modal
 f | bootstrap-typeahead.js | s | 4.7K | 111 | Jacob Thornton | jacobthornton@gmail.com | 1334446340 |  | fix typeahead test
