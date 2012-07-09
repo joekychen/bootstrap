@@ -1,4 +1,4 @@
-#    bootstrap-alert definition and alert data-API
+#    bootstrap-alert definition and alert data API
 
 /* ==========================================================
  * bootstrap-alert.js v2.0.4
