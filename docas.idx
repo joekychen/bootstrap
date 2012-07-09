@@ -1,8 +1,8 @@
-f | Makefile | g | 3.8K |  | Jacob Thornton | jacobthornton@gmail.com | 1335259305 |  | Merge branch '2.0.3-wip'  Conflicts: 	Makefile 	docs/assets/js/bootstrap.js 	docs/assets/js/bootstrap.min.js
-f | README.md | s | 4.0K | 73 | Mark Otto | markdotto@gmail.com | 1339090286 |  | Update master
-d | docs |  | 13 items |  | Jacob Thornton | jacobthornton@gmail.com | 1338573867 |  | 2.0.3 -> 2.0.4
 d | less |  | 41 items |  | Jacob Thornton | jacobthornton@gmail.com | 1338573867 |  | 2.0.3 -> 2.0.4
-f | package.json | g | 623B |  | Jacob Thornton | jacobthornton@gmail.com | 1338573867 |  | 2.0.3 -> 2.0.4
-f | LICENSE | g | 9.9K |  | Chris Aniszczyk | caniszczyk@gmail.com | 1333844259 |  | Update the LICENSE to the actual APLv2
-d | js |  | 15 items |  | joekychen | chensi@healskare.cm | 1341823220 |  | Update master
+f | Makefile | g | 3.8K |  | Jacob Thornton | jacobthornton@gmail.com | 1335259305 |  | Merge branch '2.0.3-wip'  Conflicts: 	Makefile 	docs/assets/js/bootstrap.js 	docs/assets/js/bootstrap.min.js
+d | docs |  | 13 items |  | Jacob Thornton | jacobthornton@gmail.com | 1338573867 |  | 2.0.3 -> 2.0.4
+f | README.md | s | 4.0K | 73 | Mark Otto | markdotto@gmail.com | 1339090286 |  | Update master
+d | js |  | 15 items |  | joekychen | chensi@healskare.cm | 1341825456 |  | Update master
 d | img |  | 2 items |  | Mark Otto | markotto@twitter.com | 1334447989 |  | fix #3032: update glyphicons sprite to 1.6 release
+f | LICENSE | g | 9.9K |  | Chris Aniszczyk | caniszczyk@gmail.com | 1333844259 |  | Update the LICENSE to the actual APLv2
+f | package.json | g | 623B |  | Jacob Thornton | jacobthornton@gmail.com | 1338573867 |  | 2.0.3 -> 2.0.4
